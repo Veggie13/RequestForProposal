@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SimpleDragAndDrop/Scenes/MainScene.unity
-    guid: 17d9637ab8cabc84fb2f439649944984
+    path: Assets/Scenes/SuitorScene.unity
+    guid: c1997a2eea5727e4e84aebdfdca8c253
