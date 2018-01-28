@@ -35,6 +35,9 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         var canvasRect = CanvasGO.GetComponent<RectTransform>();
         this.transform.localPosition = Input.mousePosition - 0.5f * new Vector3(canvasRect.rect.width, canvasRect.rect.height, 0);
+        getRB().velocity = new Vector2();
+        getRB().angularVelocity = 0f;
+        isBeingDragged = true;
     }
     
     void Update()
@@ -69,11 +72,17 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         {
             Rigidbody2D thisThing = collision.rigidbody;
             Rigidbody2D theOtherThing = collision.otherRigidbody;
-            theOtherThing.GetComponent<DragNDrop>().isBeingDragged = false;
             float xOffset = thisThing.position.x - theOtherThing.position.x;
             float yOffset = thisThing.position.y - theOtherThing.position.y;
             float force = 750;
-            theOtherThing.AddForce(new Vector2(force * xOffset, force * yOffset));
+            if (theOtherThing.gameObject != gameObject)
+            {
+                theOtherThing.AddForce(new Vector2(-force * xOffset, -force * yOffset));
+            }
+            else
+            {
+                thisThing.AddForce(new Vector2(force * xOffset, force * yOffset));
+            }
         }
     }
 
