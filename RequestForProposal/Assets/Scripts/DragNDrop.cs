@@ -22,6 +22,15 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private int numberTimes = 0;
 
+    void Start()
+    {
+        int randX = Random.Range(-500, 500);
+        int randY = Random.Range(-500, 500);
+        int randSpin = Random.Range(1, 15);
+        getRB().velocity = new Vector2(randX, randY);
+        getRB().angularVelocity = randSpin;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         isBeingDragged = true;
