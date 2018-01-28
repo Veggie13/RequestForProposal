@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class HostScript : MonoBehaviour {
 
+    public
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +20,6 @@ public class HostScript : MonoBehaviour {
 
     public void StartServer()
     {
-        Debug.Log("Got Here");
         this.GetComponent<NetworkManager>().StartServer();
         this.GetComponent<NetworkManager>().ServerChangeScene("LobbyScene");
 
@@ -27,10 +27,26 @@ public class HostScript : MonoBehaviour {
 
     public void StopServer()
     {
-        Debug.Log("Got Here Too");
         this.GetComponent<NetworkManager>().ServerChangeScene("TitleScene");
         this.GetComponent<NetworkManager>().StopServer();
         Destroy(gameObject);
+    }
+
+    public void StartClient()
+    {
+        //Debug.Log(this.GetComponent<NetworkManager>().networkAddress);
+        //Debug.Log(this.GetComponent<NetworkManager>().networkPort);
+        this.GetComponent<NetworkManager>().StartClient();
+    }
+
+    public void setIP(string netAddress)
+    {
+        this.GetComponent<NetworkManager>().networkAddress = netAddress;
+    }
+
+    public void setPort(string netPort)
+    {
+        this.GetComponent<NetworkManager>().networkPort =  int.Parse(netPort);
     }
 
 }
