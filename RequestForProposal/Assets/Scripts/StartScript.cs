@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartScript : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class StartScript : MonoBehaviour {
         MainPanel.SetActive(true);
         HostPanel.SetActive(false);
         ConfigPanel.SetActive(false);
+       // SceneManager.LoadScene("LobbyScene");
     }
 	
 	// Update is called once per frame
