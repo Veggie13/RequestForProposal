@@ -18,28 +18,34 @@ public class TextDots : MonoBehaviour {
     {
         if (x == 0)
         {
-            waitingText.text = "Waiting for Lovers.";
+            waitingText.text = "WAITING FOR LOVERS.";
             x++;
             Debug.Log("x = 0");
+            return;
         }
-        if (x == 1)
+        else if (x == 1)
         {
-            waitingText.text = "Waiting for Lovers..";
+            waitingText.text = "WAITING FOR LOVERS..";
             x++;
             Debug.Log("x = 1");
+            return;
         }
-        if (x == 2)
-        { 
-            waitingText.text = "Waiting for Lovers...";
+        else if (x == 2)
+        {
+            waitingText.text = "WAITING FOR LOVERS...";
             x++;
             Debug.Log("x = 2");
+            return;
         }
-        if (x == 3)
+        else if (x == 3)
         {
-            waitingText.text = "Waiting for Lovers...";
+            waitingText.text = "WAITING FOR LOVERS";
             x = 0;
             Debug.Log("x = 3");
+            return;
         }
+        else
+            return;
     }
 
 }
