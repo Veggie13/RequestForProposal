@@ -17,6 +17,6 @@ public class BacktoTitle : MonoBehaviour {
 	}
 
     void GoBack (){
-        GameObject.Find("NetworkManager").GetComponent<HostScript>().StopServer();
+        GameObject.Find("NetworkManagerPrime").GetComponent<HostScript>().StopServer();
     }
 }
