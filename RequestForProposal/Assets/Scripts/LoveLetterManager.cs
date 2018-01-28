@@ -4,24 +4,21 @@ using UnityEngine.UI;
 
 public class LoveLetterManager : MonoBehaviour {
 
-       private Transform letterFragment;
-        private Canvas canvas;
-
     [SerializeField]
     private Transform background;
     [SerializeField]
     private Text letterText;
 
     static string BLANK_MARKER = "%B";
-    static string BLANK = "__________";
+    public static string BLANK = "__________";
 
     private List<Sentence> sentences = new List<Sentence>();
-
+    private Sentence selectedSentence;
     private int lastIndexToAvoidRepeats = 0;
 
     private void Start()
     {
-        sentences.Add(new Sentence("You make my heart %B", WordType.VERB));
+        sentences.Add(new Sentence("You make my heart %B.", WordType.VERB));
         sentences.Add(new Sentence("I want to %B with you in the rain.", WordType.VERB));
         sentences.Add(new Sentence("I love the way you %B with joy.", WordType.VERB));
         sentences.Add(new Sentence("I am happiest when we %B together.", WordType.VERB));
@@ -60,10 +57,16 @@ public class LoveLetterManager : MonoBehaviour {
 
     public void CreateNewLetterSentence()
     {
-        letterText.text = getRandomSentence();
+        selectedSentence = getRandomSentence();
+        letterText.text = selectedSentence.getSentence(BLANK);
     }
 
-    private string getRandomSentence()
+    public Sentence PickThisSentence()
+    {
+        return selectedSentence;
+    }
+
+    private Sentence getRandomSentence()
     {
         int rand = Random.Range(0, sentences.Count - 1);
         if (rand == lastIndexToAvoidRepeats)
@@ -72,7 +75,7 @@ public class LoveLetterManager : MonoBehaviour {
         }
         Sentence randomSentence = sentences[rand];
         lastIndexToAvoidRepeats = rand;
-        return randomSentence.getSentence();
+        return randomSentence;
     }
 
     public enum WordType
@@ -91,9 +94,14 @@ public class LoveLetterManager : MonoBehaviour {
             this.blanks = blanks;
         }
 
-        public string getSentence()
+        public string getSentence(string replaceBlankWith)
         {
-            return sentence.Replace(BLANK_MARKER, BLANK);
+            return sentence.Replace(BLANK_MARKER, replaceBlankWith);
+        }
+
+        public WordType getWordType()
+        {
+            return blanks[0];
         }
     }
 }
