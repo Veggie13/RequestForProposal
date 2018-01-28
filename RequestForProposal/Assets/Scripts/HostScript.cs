@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class HostScript : MonoBehaviour {
+public class HostScript : NetworkBehaviour {
 
     public
 	// Use this for initialization
@@ -47,6 +47,11 @@ public class HostScript : MonoBehaviour {
     public void setPort(string netPort)
     {
         this.GetComponent<NetworkManager>().networkPort =  int.Parse(netPort);
+    }
+
+    public void StartGame()
+    {
+        this.GetComponent<NetworkManager>().ServerChangeScene("EverythingScene");
     }
 
 }
