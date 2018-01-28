@@ -14,14 +14,13 @@ public class SuitorWordSelector : MonoBehaviour {
     private LoveLetterManager.Sentence currentSentence;
     private List<string> nouns = new List<string>();
     private List<string> verbs = new List<string>();
-    private List<Word> adjectives = new List<Word>();
-    private List<Word> adverbs = new List<Word>();
+    private List<string> adjectives = new List<string>();
     private int lastIndexToAvoidRepeats = 0;
 
     void Start()
     {
-        currentSentence = new LoveLetterManager.Sentence("Waiting for adlib...", LoveLetterManager.WordType.ADVERB);
-        currentWord = new Word("test", LoveLetterManager.WordType.NOUN);
+        currentSentence = new LoveLetterManager.Sentence("Waiting for adlib...", LoveLetterManager.WordType.NONE);
+        currentWord = new Word("", LoveLetterManager.WordType.NONE);
         renderW();
 
         nouns.Add("heart");
@@ -29,12 +28,71 @@ public class SuitorWordSelector : MonoBehaviour {
         nouns.Add("dream");
         nouns.Add("banana");
         nouns.Add("soul");
+        nouns.Add("career");
+        nouns.Add("body");
+        nouns.Add("mind");
+        nouns.Add("toe");
+        nouns.Add("hand");
+        nouns.Add("elbow");
+        nouns.Add("belly button");
+        nouns.Add("forehead");
+        nouns.Add("spirit");
+        nouns.Add("allowance");
+        nouns.Add("wallet");
+        nouns.Add("bank account");
+        nouns.Add("job");
+        nouns.Add("poetry");
+        nouns.Add("art");
+        nouns.Add("dog");
+        nouns.Add("cat");
+        nouns.Add("goldfish");
+        nouns.Add("hair");
+        nouns.Add("ear");
+        nouns.Add("peach");
+        //nouns.Add("");
 
         verbs.Add("sing");
         verbs.Add("cook");
         verbs.Add("clean");
         verbs.Add("sigh");
         verbs.Add("dream");
+        verbs.Add("dance");
+        verbs.Add("cry");
+        verbs.Add("swim");
+        verbs.Add("defuse a bomb");
+        verbs.Add("twirl around");
+        verbs.Add("eat");
+        verbs.Add("eat gummy bears");
+        verbs.Add("abandon my children");
+        verbs.Add("drive");
+        verbs.Add("write poetry");
+        //verbs.Add("");
+
+        adjectives.Add("beautiful");
+        adjectives.Add("stinky");
+        adjectives.Add("clean");
+        adjectives.Add("appalling");
+        adjectives.Add("crusty");
+        adjectives.Add("sweet");
+        adjectives.Add("nice");
+        adjectives.Add("decent");
+        adjectives.Add("frustrating");
+        adjectives.Add("picky");
+        adjectives.Add("tart");
+        adjectives.Add("nasty");
+        adjectives.Add("irrelevant");
+        adjectives.Add("smoking");
+        adjectives.Add("hot");
+        adjectives.Add("cranky");
+        adjectives.Add("helpful");
+        adjectives.Add("spotty");
+        adjectives.Add("shimmering");
+        adjectives.Add("sparkly");
+        adjectives.Add("soft");
+        adjectives.Add("hard");
+        adjectives.Add("bendy");
+        adjectives.Add("questionable");
+        //adjectives.Add("");
     }
 
     public void SetSentence()
@@ -46,7 +104,7 @@ public class SuitorWordSelector : MonoBehaviour {
     public void GetNewWord()
     {
         LoveLetterManager.WordType wordType = currentSentence.getWordType();
-        currentWord = new Word(getRandomWord(wordType), LoveLetterManager.WordType.ADVERB);
+        currentWord = new Word(getRandomWord(wordType), wordType);
         renderW();
     }
 
@@ -72,10 +130,7 @@ public class SuitorWordSelector : MonoBehaviour {
                 words = verbs;
                 break;
             case LoveLetterManager.WordType.ADJECTIVE:
-//                words = adjectives;
-                break;
-            case LoveLetterManager.WordType.ADVERB:
-//                words = adverbs;
+                words = adjectives;
                 break;
         }
 
@@ -84,7 +139,6 @@ public class SuitorWordSelector : MonoBehaviour {
         {
             rand++;
         }
-//        Word randomWord = words[rand];
         lastIndexToAvoidRepeats = rand;
         return words[rand];
     }

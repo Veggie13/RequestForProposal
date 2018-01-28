@@ -38,21 +38,12 @@ public class LoveLetterManager : MonoBehaviour {
 
         sentences.Add(new Sentence("Your voice is as %B as a summer day.", WordType.ADJECTIVE));
         sentences.Add(new Sentence("My heart flutters at the thought of your %B eyes.", WordType.ADJECTIVE));
+        sentences.Add(new Sentence("Together, we will make %B babies!", WordType.ADJECTIVE));
+        sentences.Add(new Sentence("I could stare at your %B forever.", WordType.ADJECTIVE));
+        sentences.Add(new Sentence("You fill my heart with a %B song.", WordType.ADJECTIVE));
+        sentences.Add(new Sentence("I will always admire your %B soul.", WordType.ADJECTIVE));
 
         CreateNewLetterSentence();
-        /*  sentences.Add(new Sentence("You fill my heart with a AA song."));
-          sentences.Add(new Sentence("I think we go together like NN and NN."));
-          sentences.Add(new Sentence("Your beauty makes my NN VV."));
-          sentences.Add(new Sentence("I would VV if I never saw your NN again!"));
-          sentences.Add(new Sentence("Oh how your NN VVs in the sunlight!"));
-          sentences.Add(new Sentence("Together, we will make AA NN!"));
-          sentences.Add(new Sentence("I would love to VV your AA NN forever."));
-          sentences.Add(new Sentence("I am amazed how you AV VV your NN."));
-          sentences.Add(new Sentence("You never cease to AV VV my NN!"));
-          sentences.Add(new Sentence("To conclude, you AV VV my NN."));
-          sentences.Add(new Sentence("I will forever long to AV VV your NN."));
-          sentences.Add(new Sentence("Your NN and my NN will make AA NN together.")) */
-        ;
     }
 
     public void CreateNewLetterSentence()
@@ -80,7 +71,7 @@ public class LoveLetterManager : MonoBehaviour {
 
     public enum WordType
     {
-        NOUN, VERB, ADJECTIVE, ADVERB
+        NOUN, VERB, ADJECTIVE, NONE
     }
 
     public class Sentence
