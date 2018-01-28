@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BacktoTitle : MonoBehaviour {
+public class LobbyUI : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         gameObject.GetComponent<Button>().onClick.AddListener(GoBack);
 
 	}
@@ -15,6 +15,11 @@ public class BacktoTitle : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void Spawn()
+    {
+        GameObject.Find("NetworkManagerPrime").GetComponent<HostScript>().SpawnPlayer();
+    }
 
     void GoBack (){
         GameObject.Find("NetworkManagerPrime").GetComponent<HostScript>().StopServer();
