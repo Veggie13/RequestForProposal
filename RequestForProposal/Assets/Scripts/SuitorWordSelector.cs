@@ -115,7 +115,7 @@ public class SuitorWordSelector : MonoBehaviour {
 
     private void renderW()
     {
-        sentenceDisplay.text = currentSentence.getSentence(currentWord.getWord());
+        sentenceDisplay.text = currentSentence.getSentence(currentWord.getWord().ToUpper());
     }
 
     private string getRandomWord(LoveLetterManager.WordType type)

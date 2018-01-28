@@ -53,9 +53,9 @@ public class HostScript : NetworkBehaviour {
 
     public void StartGame()
     {
-        AudioSource audio = this.GetComponent<NetworkManager>().GetComponent<AudioSource>();
+        AudioSource audio = this.GetComponent<AudioSource>();
         audio.Stop();
-        //this.GetComponent<NetworkManager>().ServerChangeScene("SuitorScene");
+        this.GetComponent<NetworkManager>().ServerChangeScene("SuitorScene");
     }
 
     public void SpawnPlayer()
