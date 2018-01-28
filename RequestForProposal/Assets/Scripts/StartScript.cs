@@ -6,18 +6,45 @@ using UnityEngine.SceneManagement;
 public class StartScript : MonoBehaviour {
 
     [SerializeField]
-    private GameObject MainPanel;
+    private GameObject ServerCanvas;
     [SerializeField]
-    private GameObject HostPanel;
+    private GameObject ServerMainPanel;
     [SerializeField]
-    private GameObject ConfigPanel;
+    private GameObject ServerConfigPanel;
+    [SerializeField]
+    private GameObject ClientCanvas;
+    [SerializeField]
+    private GameObject ClientMainPanel;
+    [SerializeField]
+    private GameObject ClientConfigPanel;
+
+
 
     // Use this for initialization
     void Start () {
-        MainPanel.SetActive(true);
-        HostPanel.SetActive(false);
-        ConfigPanel.SetActive(false);
-       // SceneManager.LoadScene("LobbyScene");
+        ServerCanvas.SetActive(false);
+        ServerMainPanel.SetActive(true);
+        ServerConfigPanel.SetActive(false);
+        ClientCanvas.SetActive(false);
+        ClientMainPanel.SetActive(true);
+        ClientConfigPanel.SetActive(false);
+
+        Screen.autorotateToPortrait = true;
+        Screen.autorotateToPortraitUpsideDown = true;
+        Screen.autorotateToLandscapeLeft = false;
+        Screen.autorotateToLandscapeRight = false;
+        if(Screen.width < Screen.height)
+        {
+            ClientCanvas.SetActive(true);
+        }
+        else if(Screen.width == 640)
+        {
+            ClientCanvas.SetActive(true);
+        }
+        else
+        {
+            ServerCanvas.SetActive(true);
+        }
     }
 	
 	// Update is called once per frame
