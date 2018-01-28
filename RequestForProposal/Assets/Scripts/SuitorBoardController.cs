@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SuitorBoardController : MonoBehaviour {
+public class SuitorBoardController : NetworkBehaviour {
 
     public GameObject WordManagerGO;
 
@@ -18,6 +19,8 @@ public class SuitorBoardController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if (isLocalPlayer) return;
+
         this.ExtentsWatcher = ExtentsGO.GetComponent<ExtentsWatcher>();
         this.ExtentsWatcher.GameObjectExited += ExtentsWatcher_GameObjectExited;
 
@@ -36,7 +39,7 @@ public class SuitorBoardController : MonoBehaviour {
         if (word != null)
         {
             WordManager.TossWord(word.WordText);
-            Destroy(go);
+            NetworkServer.Destroy(go);
         }
     }
 
@@ -52,8 +55,10 @@ public class SuitorBoardController : MonoBehaviour {
         wordGO.tag = "Untagged";
         var wordScript = wordGO.GetComponent<Word>();
         wordScript.WordText = word;
+        wordScript.Name = gameObject.name;
         var startVel = -0.3f * worldHalfWidth * new Vector3(Mathf.Cos(angle) - 0.1f * Mathf.Cos(angle * angle), Mathf.Sin(angle) - 0.1f * Mathf.Sin(angle * angle), 0);
         wordGO.GetComponent<Rigidbody2D>().velocity = startVel;
         wordGO.GetComponent<Rigidbody2D>().angularVelocity = angle * 10f;
+        NetworkServer.Spawn(wordGO);
     }
 }

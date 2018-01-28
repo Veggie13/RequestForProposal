@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 58940045673485470}
   - component: {fileID: 114186720773117896}
   - component: {fileID: 114323757694003692}
+  - component: {fileID: 114008773017131636}
   m_Layer: 5
   m_Name: Word
   m_TagString: Untagged
@@ -67,6 +68,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 50
+--- !u!114 &114008773017131636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607837806936008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 202
+    i1: 29
+    i2: 48
+    i3: 66
+    i4: 170
+    i5: 187
+    i6: 45
+    i7: 148
+    i8: 9
+    i9: 71
+    i10: 161
+    i11: 254
+    i12: 236
+    i13: 114
+    i14: 62
+    i15: 161
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114186720773117896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -78,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f941399802ae1c44fa12dfae2a942aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGO: {fileID: 0}
 --- !u!114 &114323757694003692
 MonoBehaviour:
   m_ObjectHideFlags: 1

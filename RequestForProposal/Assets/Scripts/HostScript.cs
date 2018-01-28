@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class HostScript : NetworkBehaviour {
+public class HostScript : MonoBehaviour {
 
     public
 	// Use this for initialization

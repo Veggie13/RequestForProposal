@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class WordManagerProxy : MonoBehaviour
+public class WordManagerProxy : NetworkBehaviour
 {
     [SerializeField]
     private GameObject WordManagerControllerGO;
@@ -13,6 +13,7 @@ public class WordManagerProxy : MonoBehaviour
 
     public void Connect()
     {
+        if (!isServer) return;
         _controller = WordManagerControllerGO.GetComponent<WordManagerController>();
         _controller.Connect(this);
     }

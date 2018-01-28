@@ -37,7 +37,7 @@ public class StartScript : MonoBehaviour {
         {
             ClientCanvas.SetActive(true);
         }
-        else if(Screen.width == 1600 && Screen.height == 1024)
+        else if(Screen.width == 1600)
         {
             ClientCanvas.SetActive(true);
         }

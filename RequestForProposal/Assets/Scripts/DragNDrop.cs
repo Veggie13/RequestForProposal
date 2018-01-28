@@ -2,11 +2,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(Image))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragNDrop : NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private GameObject CanvasGO;
@@ -14,16 +15,17 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private static float MAX_TIME = 0.6f;
 
     public delegate void DragEvent(DragNDrop item);
-    bool isBeingDragged = false;
-    float xPositionStart;
-    float yPositionStart;
-    Time time;
-    float timeTracker = MAX_TIME;
+    [SyncVar] bool isBeingDragged = false;
+    [SyncVar] float xPositionStart;
+    [SyncVar] float yPositionStart;
+    //Time time;
+    [SyncVar] float timeTracker = MAX_TIME;
 
-    private int numberTimes = 0;
+    [SyncVar] private int numberTimes = 0;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (isServer) return;
         isBeingDragged = true;
         ResetStartConditions();
 
@@ -33,6 +35,7 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData data)
     {
+        if (isServer) return;
         var canvasRect = CanvasGO.GetComponent<RectTransform>();
         this.transform.localPosition = Input.mousePosition - 0.5f * new Vector3(canvasRect.rect.width, canvasRect.rect.height, 0);
         getRB().velocity = new Vector2();
@@ -42,6 +45,7 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     
     void Update()
     {
+        if (!isServer) return;
         if (isBeingDragged)
         {
             timeTracker = timeTracker - Time.deltaTime;
@@ -55,6 +59,7 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (isServer) return;
         if (isBeingDragged)
         {
             Rigidbody2D rb = getRB();
@@ -68,6 +73,7 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isServer) return;
         if (this.isBeingDragged)
         {
             Rigidbody2D thisThing = collision.rigidbody;

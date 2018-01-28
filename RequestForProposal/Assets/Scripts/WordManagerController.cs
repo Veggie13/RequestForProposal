@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class WordManagerController : MonoBehaviour
+public class WordManagerController : NetworkBehaviour
 {
     private List<WordManagerProxy> _proxies = new List<WordManagerProxy>();
 
     void Start()
     {
+        if (!isServer) return;
+
         InvokeRepeating("GenerateRandomWord", 2f, 2f);
     }
 

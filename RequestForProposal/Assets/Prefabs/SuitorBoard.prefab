@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224373489501663504}
   - component: {fileID: 61399593799616418}
   - component: {fileID: 114492278934085724}
+  - component: {fileID: 114249368930825218}
   m_Layer: 5
   m_Name: Extents
   m_TagString: Untagged
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 223677570573626758}
   - component: {fileID: 114404875379901050}
   - component: {fileID: 114310292396042766}
+  - component: {fileID: 114717138044166356}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -78,6 +80,8 @@ GameObject:
   - component: {fileID: 58063049798992934}
   - component: {fileID: 114016309332370260}
   - component: {fileID: 114712997562972254}
+  - component: {fileID: 114814189427757688}
+  - component: {fileID: 114648106717192376}
   m_Layer: 5
   m_Name: WordTemplate
   m_TagString: EditorOnly
@@ -94,6 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4899251364364436}
   - component: {fileID: 114106426798084646}
+  - component: {fileID: 114958555484981536}
   m_Layer: 0
   m_Name: SuitorBoard
   m_TagString: Untagged
@@ -110,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709053465591744}
   - component: {fileID: 114159569132949000}
+  - component: {fileID: 114461609896903352}
   m_Layer: 0
   m_Name: WordManager
   m_TagString: Untagged
@@ -150,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778549558704948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 100, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4709053465591744}
@@ -287,7 +293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordManagerGO: {fileID: 1915313330623636}
   ExtentsGO: {fileID: 1504632415623412}
-  WordTemplateGO: {fileID: 1683687347335996}
+  WordTemplateGO: {fileID: 1607837806936008, guid: ca1d3042aabb2d940947a1feec723ea1,
+    type: 2}
   CanvasGO: {fileID: 1511737384977646}
 --- !u!114 &114159569132949000
 MonoBehaviour:
@@ -301,6 +308,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WordManagerControllerGO: {fileID: 0}
+--- !u!114 &114249368930825218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504632415623412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 225
+    i1: 59
+    i2: 132
+    i3: 116
+    i4: 206
+    i5: 144
+    i6: 91
+    i7: 164
+    i8: 200
+    i9: 231
+    i10: 49
+    i11: 81
+    i12: 206
+    i13: 29
+    i14: 32
+    i15: 140
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114310292396042766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,6 +377,38 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114461609896903352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915313330623636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 225
+    i1: 59
+    i2: 132
+    i3: 116
+    i4: 206
+    i5: 144
+    i6: 91
+    i7: 164
+    i8: 200
+    i9: 231
+    i10: 49
+    i11: 81
+    i12: 206
+    i13: 29
+    i14: 32
+    i15: 140
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114492278934085724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,6 +447,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114648106717192376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683687347335996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 225
+    i1: 59
+    i2: 132
+    i3: 116
+    i4: 206
+    i5: 144
+    i6: 91
+    i7: 164
+    i8: 200
+    i9: 231
+    i10: 49
+    i11: 81
+    i12: 206
+    i13: 29
+    i14: 32
+    i15: 140
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114712997562972254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,6 +492,91 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   WordText: 
+--- !u!114 &114717138044166356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511737384977646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 225
+    i1: 59
+    i2: 132
+    i3: 116
+    i4: 206
+    i5: 144
+    i6: 91
+    i7: 164
+    i8: 200
+    i9: 231
+    i10: 49
+    i11: 81
+    i12: 206
+    i13: 29
+    i14: 32
+    i15: 140
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114814189427757688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683687347335996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114958555484981536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1778549558704948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 225
+    i1: 59
+    i2: 132
+    i3: 116
+    i4: 206
+    i5: 144
+    i6: 91
+    i7: 164
+    i8: 200
+    i9: 231
+    i10: 49
+    i11: 81
+    i12: 206
+    i13: 29
+    i14: 32
+    i15: 140
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!124 &124505046640722778
 Behaviour:
   m_ObjectHideFlags: 1
