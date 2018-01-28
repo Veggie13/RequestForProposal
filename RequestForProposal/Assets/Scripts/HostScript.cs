@@ -9,6 +9,7 @@ public class HostScript : NetworkBehaviour {
 
     private float offset = -1;
     public GameObject Player1Prefab;
+    public GameObject TitleMusic;
 	// Use this for initialization
 	void Start () {
 		
@@ -52,7 +53,9 @@ public class HostScript : NetworkBehaviour {
 
     public void StartGame()
     {
-        this.GetComponent<NetworkManager>().ServerChangeScene("EverythingScene");
+        AudioSource audio = this.GetComponent<NetworkManager>().GetComponent<AudioSource>();
+        audio.Stop();
+        //this.GetComponent<NetworkManager>().ServerChangeScene("SuitorScene");
     }
 
     public void SpawnPlayer()
