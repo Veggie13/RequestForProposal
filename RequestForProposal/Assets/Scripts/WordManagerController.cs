@@ -33,19 +33,21 @@ public class WordManagerController : MonoBehaviour
 
     public void GenerateWord(string word)
     {
+        if (NetworkServer.connections.Count == 0)
+            return;
         var rand = new System.Random();
-        int target = rand.Next(1, NetworkServer.connections.Count);
-        var targetConnection = NetworkServer.connections[target];
+        NetworkConnection targetConnection = null;
+        for (int i = 0; i < 10 && targetConnection == null; i++)
+        {
+            int target = rand.Next(0, NetworkServer.connections.Count);
+            targetConnection = NetworkServer.connections[target];
+        }
         if (targetConnection != null)
         {
             NetworkServer.SendToClient(targetConnection.connectionId, WordGeneratedMessage.Type, new WordGeneratedMessage()
             {
                 Word = word
             });
-        }
-        else
-        {
-            Debug.Log(string.Format("Why? {0}", target));
         }
     }
 

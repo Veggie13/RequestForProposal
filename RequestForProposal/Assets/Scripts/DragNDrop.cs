@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Collider2D))]
 public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField]
+    private GameObject CanvasGO;
+
     private static float MAX_TIME = 0.6f;
 
     public delegate void DragEvent(DragNDrop item);
@@ -30,7 +33,8 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData data)
     {
-        this.transform.position = Input.mousePosition;
+        var canvasRect = CanvasGO.GetComponent<RectTransform>();
+        this.transform.localPosition = Input.mousePosition - 0.5f * new Vector3(canvasRect.rect.width, canvasRect.rect.height, 0);
     }
     
     void Update()
