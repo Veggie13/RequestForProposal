@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour {
         {
             var suitorGO = Instantiate(SuitorBoardTemplate, new Vector3(), Quaternion.identity);
             suitorGO.transform.position = new Vector3(100 * i, 0, 0);
-            suitorGO.GetComponentInChildren<Messenger>().Connect();
+            suitorGO.GetComponentInChildren<WordManagerProxy>().Connect();
         }
 	}
 	

@@ -3,15 +3,23 @@ using UnityEngine.Networking;
 
 public class WordManagerProxy : MonoBehaviour
 {
-    NetworkClient _client;
-
     [SerializeField]
-    private GameObject MessageManagerGO;
+    private GameObject WordManagerControllerGO;
+    private WordManagerController _controller;
 
     void Start()
     {
-        _client = MessageManagerGO.GetComponent<Messenger>().Client;
-        _client.RegisterHandler(WordGeneratedMessage.Type, nm => { WordGenerated(nm.ReadMessage<WordGeneratedMessage>().Word); });
+    }
+
+    public void Connect()
+    {
+        _controller = WordManagerControllerGO.GetComponent<WordManagerController>();
+        _controller.Connect(this);
+    }
+
+    public void GenerateWord(string word)
+    {
+        WordGenerated(word);
     }
 
     public delegate void WordGeneratedHandler(string word);
@@ -19,9 +27,6 @@ public class WordManagerProxy : MonoBehaviour
 
     public void TossWord(string word)
     {
-        _client.Send(WordTossedMessage.Type, new WordTossedMessage()
-        {
-            Word = word
-        });
+        _controller.TossWord(word);
     }
 }

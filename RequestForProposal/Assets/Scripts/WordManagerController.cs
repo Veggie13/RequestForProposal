@@ -1,29 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
-
-public class WordGeneratedMessage : MessageBase
-{
-    public static readonly short Type = MsgType.Highest + 2;
-    public string Word;
-}
-
-public class WordTossedMessage : MessageBase
-{
-    public static readonly short Type = MsgType.Highest + 3;
-    public string Word;
-}
+using System.Collections.Generic;
 
 public class WordManagerController : MonoBehaviour
 {
+    private List<WordManagerProxy> _proxies = new List<WordManagerProxy>();
+
     void Start()
     {
-        NetworkServer.RegisterHandler(WordTossedMessage.Type, nm => { TossWord(nm.ReadMessage<WordTossedMessage>().Word); });
         InvokeRepeating("GenerateRandomWord", 2f, 2f);
-    }
-
-    private void Update()
-    {
-
     }
 
     void GenerateRandomWord()
@@ -31,23 +15,21 @@ public class WordManagerController : MonoBehaviour
         GenerateWord("blah");
     }
 
+    public void Connect(WordManagerProxy proxy)
+    {
+        _proxies.Add(proxy);
+    }
+
     public void GenerateWord(string word)
     {
-        if (NetworkServer.connections.Count == 0)
+        if (_proxies.Count == 0)
             return;
         var rand = new System.Random();
-        NetworkConnection targetConnection = null;
-        for (int i = 0; i < 10 && targetConnection == null; i++)
+        int target = rand.Next(0, _proxies.Count);
+        var proxy = _proxies[target];
+        if (proxy != null)
         {
-            int target = rand.Next(0, NetworkServer.connections.Count);
-            targetConnection = NetworkServer.connections[target];
-        }
-        if (targetConnection != null)
-        {
-            NetworkServer.SendToClient(targetConnection.connectionId, WordGeneratedMessage.Type, new WordGeneratedMessage()
-            {
-                Word = word
-            });
+            proxy.GenerateWord(word);
         }
     }
 
