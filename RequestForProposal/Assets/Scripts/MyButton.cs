@@ -17,7 +17,7 @@ public class MyButton : MonoBehaviour {
         };
         _wordMgr.WordGenerated += msg =>
         {
-            Debug.Log("Word: " + msg.Word);
+            Debug.Log("Word: " + msg);
         };
     }
 	

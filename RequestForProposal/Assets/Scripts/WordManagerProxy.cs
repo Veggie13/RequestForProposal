@@ -5,20 +5,16 @@ public class WordManagerProxy : MonoBehaviour
 {
     NetworkClient _client;
 
+    [SerializeField]
+    private GameObject MessageManagerGO;
+
     void Start()
     {
+        _client = MessageManagerGO.GetComponent<Messenger>().Client;
+        _client.RegisterHandler(WordGeneratedMessage.Type, nm => { WordGenerated(nm.ReadMessage<WordGeneratedMessage>().Word); });
     }
 
-    void Update()
-    {
-        if (_client == null)
-        {
-            _client = GameObject.Find("MessageManager").GetComponent<Messenger>().Client;
-            _client.RegisterHandler(WordGeneratedMessage.Type, nm => { WordGenerated(nm.ReadMessage<WordGeneratedMessage>()); });
-        }
-    }
-
-    public delegate void WordGeneratedHandler(WordGeneratedMessage msg);
+    public delegate void WordGeneratedHandler(string word);
     public event WordGeneratedHandler WordGenerated = msg => { };
 
     public void TossWord(string word)

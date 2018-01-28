@@ -6,7 +6,9 @@ public class ExtentsWatcher : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("GONE!");
-        Destroy(collision.gameObject);
+        GameObjectExited(collision.gameObject);
     }
+
+    public delegate void GameObjectEvent(GameObject go);
+    public event GameObjectEvent GameObjectExited = go => { };
 }
